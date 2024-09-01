@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Contact Form</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .all {
+        background-color: #e8ebe3;
+        height: 80vh;
+        width: 80vh;
+        margin: 0 auto;
+        margin-top: 10px;
+        box-shadow: 0 0 7px rgba(0, 0, 0, 0.356);
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        
+        
+      }
+
+      .main{
+        background-color:  #8db45e;
+        color: white;
+        height: 90px; 
+        width: auto;
+        border-radius: 5px 5px 0 0;
+        padding: 12px 10px 10px 10px;
+        /* font-family: Calibri, 'Trebuchet MS', sans-serif; */
+        
+      }
+
+      input,textarea,select{
+        width: 70vh;
+        height: 6vh;
+        padding: 6px;
+        font-family: 'Nunito', sans-serif;
+        border: 2px solid lightgray;
+        color: grey;
+      }
+
+ 
+
+      #below{
+        margin-left: 5px;
+      }
+
+      .dosra{
+        padding: 20px 10px;
+        font-family: 'Nunito', sans-serif;
+      }
+
+
+    </style>
+  </head>
+
+  <body>
+
+    <div class="all">
+      <div class="main">
+        <h1>Contact Form</h1>
+        <p id="below">Please fill all the texts in the fields</p>
+      </div>
+      <div class="dosra">
+        <p>
+          Your Name : <br />
+          <input type="text" placeholder="Enter Your Full Name" />
+        </p>
+        <p>
+          Your Email : <br />
+          <input type="email" placeholder="Valid Email Address" />
+        </p>
+        <p>
+          Message : <br />
+          <textarea name="textarea" id="" cols="" rows="" placeholder="Message To Us "></textarea>
+        </p>
+        <p>
+          Subject : <br />
+          <select required>
+            <option value=""> Select a Purpose</option>
+            <option value="Visa">Visa</option>
+            <option value="debitcard">Debit Card</option>
+            <option value="creditcard">Credit Card </option>
+        </select>
+        </p>
+      </div>
+      <button>Send</button>
+    </div>
+  </body>
+</html>
