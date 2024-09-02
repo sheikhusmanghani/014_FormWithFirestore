@@ -16,29 +16,59 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// Initialize Cloud Firestore and get a reference to the service
+// // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
+
+// // Firebase app initialize karen
+// const app = firebase.initializeApp(firebaseConfig);
+// // Firestore instance ko initialize karen
+// const db = firebase.firestore();
 // ==================================================================== variabls =======================
-const btn = document.getElementById("btn");
+const form = document.getElementById("form");
 const name = document.getElementById("name");
 const email = document.getElementById("email");
 const number = document.getElementById("number");
 const age = document.getElementById("age");
+const courses = document.getElementById("courses");
 
-console.log(btn, name, email, number, age);
+// console.log(name.value, email.value, number.value, age.value, courses.value, db);
 
-// ========================================================================  ===================
+// ==================================      adding data in firestore       =====================================
 
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  // Loader ko dikhana aur submit button ko hide karna
+  document.getElementById("btn").style.display = "none";
+  document.getElementById("loader").style.display = "inline-block";
 
-async function setUserData() {
   try {
     const docRef = await addDoc(collection(db, "users"), {
-      first: "Ada",
-      last: "Lovelace",
-      born: 1815,
+      name: name.value,
+      email: email.value,
+      number: number.value,
+      age: age.value,
+      course: courses.value,
     });
-    console.log("Document written with ID: ", docRef.id);
+    console.log("User ID: ", docRef.id);
   } catch (e) {
-    console.error("Error adding document: ", e);
+    console.error("Error : ", e);
   }
-}
+  // -----------------
+  // Loader ko hide karna aur submit button ko wapas dikhana
+  document.getElementById("btn").style.display = "inline-block";
+  document.getElementById("loader").style.display = "none";
+  // for alert
+  Toastify({
+    text: "Your Data has been saved !!",
+    duration: 3000,
+    position: "center",
+    style: {
+      background: "linear-gradient(to  top, #357068, #a8d0e0)",
+      borderRadius: "8px",
+    },
+  }).showToast();
+  // for  empty fields
+  document.getElementById("form").reset();
+});
+
+// ==================================      getting data in firestore       =====================================
