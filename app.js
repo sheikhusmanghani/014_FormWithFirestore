@@ -1,28 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+import { addDoc, collection, db } from "./firebase.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCUtz5awB6XDshCTzKUw_PWnc8ePw0pjhw",
-  authDomain: "signup-in-form.firebaseapp.com",
-  projectId: "signup-in-form",
-  storageBucket: "signup-in-form.appspot.com",
-  messagingSenderId: "433404649375",
-  appId: "1:433404649375:web:ce4a6fd684b408bc0567aa",
-  measurementId: "G-FFB80YSSZG",
-};
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-// // Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
-
-// // Firebase app initialize karen
-// const app = firebase.initializeApp(firebaseConfig);
-// // Firestore instance ko initialize karen
-// const db = firebase.firestore();
 // ==================================================================== variabls =======================
 const form = document.getElementById("form");
 const name = document.getElementById("name");
@@ -31,14 +8,12 @@ const number = document.getElementById("number");
 const age = document.getElementById("age");
 const courses = document.getElementById("courses");
 
-// console.log(name.value, email.value, number.value, age.value, courses.value, db);
-
 // ==================================      adding data in firestore       =====================================
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  // Loader ko dikhana aur submit button ko hide karna
-  document.getElementById("btn").style.display = "none";
+  // Loader ko daikhana aur submit button ko hide karna
+  document.getElementById("btn").style.disply = "none";
   document.getElementById("loader").style.display = "inline-block";
 
   try {
@@ -53,11 +28,11 @@ form.addEventListener("submit", async (e) => {
   } catch (e) {
     console.error("Error : ", e);
   }
-  // -----------------
+
   // Loader ko hide karna aur submit button ko wapas dikhana
   document.getElementById("btn").style.display = "inline-block";
   document.getElementById("loader").style.display = "none";
-  // for alert
+  // for alerting the msg
   Toastify({
     text: "Your Data has been saved !!",
     duration: 3000,
